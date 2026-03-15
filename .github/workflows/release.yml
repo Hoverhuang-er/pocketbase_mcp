@@ -69,11 +69,11 @@ jobs:
             target_os: linux
             target_arch: arm64
             ext: ''
-          - id: darwin-x64
-            runs_on: macos-13
-            target_os: macos
-            target_arch: x64
-            ext: ''
+        #   - id: darwin-x64
+        #     runs_on: macos-13
+        #     target_os: macos
+        #     target_arch: x64
+        #     ext: ''
     steps:
       - name: Checkout
         uses: actions/checkout@v4
