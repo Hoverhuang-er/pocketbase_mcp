@@ -1,0 +1,28 @@
+connection = "streamablehttp" # 可选: "stdio" | "streamablehttp"；例子: connection = "streamablehttp"
+
+[pocketbase]
+url = "http://localhost:8090" # PocketBase 地址；例子: "http://127.0.0.1:8090"
+admin_email = "root@hosin.com" # PocketBase 超级管理员邮箱；例子: "admin@example.com"
+admin_password = "xxxx" # PocketBase 超级管理员密码；例子: "admin_password"
+pb_mcp_mode = "readonly" # 可选: "readonly" | "readwrite"；例子: pb_mcp_mode = "readwrite"
+
+[streamablehttp]
+host = "0.0.0.0" # 仅 connection=streamablehttp 时生效；可选: "127.0.0.1"(仅本机) | "0.0.0.0"(对外监听)
+port = 3000 # 仅 connection=streamablehttp 时生效；例子: 8080
+path = "/mcp" # 仅 connection=streamablehttp 时生效，建议以 / 开头；例子: "/api/mcp"
+enable_dns_rebinding_protection = true # 可选: true | false；公网建议 true，内网穿透调试可临时 false
+allowed_hosts = [] # 可选: Host 白名单(不带协议)；为空或包含 "*" 视为全放行；例子: ["mcp.example.com","1.2.3.4:3000"]
+allowed_origins = [] # 可选: Origin 白名单(带协议)；为空或包含 "*" 视为全放行；例子: ["https://mcp.example.com"]
+
+[auth]
+enabled = false # 可选: true | false；例子: enabled = true
+mode = "token" # 可选: "token" | "oauth"；当前 oauth 为 TODO，建议先用 token
+bearer_tokens = ["change-this-token"] # mode=token 时使用，标准 Authorization: Bearer <token>；例子: ["prod-token-1","backup-token-2"]
+
+[log]
+output = "stderr" # 可选: "stdout" | "stderr" | "file"；file 固定写入 mcp.log
+level = "debug" # 可选: "info" | "error" | "debug"；分别对应普通日志/仅错误/全部
+days = 1 # 日志保留天数；按天轮转为 mcp-YYYY-MM-DD.log，超过天数自动删除
+
+[health]
+enabled = true # connection=streamablehttp 时新增同级 GET /healthz 探活端点

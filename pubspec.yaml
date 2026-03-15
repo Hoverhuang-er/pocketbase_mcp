@@ -1,0 +1,16 @@
+name: pocketbase_mcp_server
+description: PocketBase MCP server implemented in Dart with stdio transport.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.0.0
+
+dependencies:
+  logging: ^1.3.0
+  mcp_dart: ^2.1.0
+  pocketbase: ^0.23.2
+  toml: ^0.18.0
+
+dev_dependencies:
+  lints: ^5.1.1

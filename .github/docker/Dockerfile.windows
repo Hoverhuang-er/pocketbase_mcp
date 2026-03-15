@@ -1,0 +1,6 @@
+FROM mcr.microsoft.com/windows/nanoserver:ltsc2022
+
+ARG BIN_PATH=dist/windows-x64/pocketbase_mcp.exe
+COPY ${BIN_PATH} C:/pocketbase_mcp/pocketbase_mcp.exe
+
+ENTRYPOINT ["C:\\pocketbase_mcp\\pocketbase_mcp.exe"]
